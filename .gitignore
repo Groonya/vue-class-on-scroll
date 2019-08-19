@@ -1,0 +1,4 @@
+node_modules
+*.log
+vue-class-on-scroll.js
+yarn.lock

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: #5cbe43;
+            width: 100%;
+            margin-top: 100px;
+        }
+
+        .content {
+            min-height: 2000px;
+        }
+
+        .sticky {
+            position: fixed;
+            margin-top: 0;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="app"></div>
+<script type="text/x-template" id="app-template">
+<div class="app">
+    <div class="header" v-class-on-scroll>
+        Header
+    </div>
+    <div class="content">
+
+    </div>
+</div>
+</script>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script type="module" src="./app.js"></script>
+<script nomodule>
+document.querySelector('.app').innerHTML = `
+    <p>Opps, it seems your browser does not support ES modules, <br/>
+    please follow <a href='https://github.com/paulirish/es-modules-todomvc/blob/master/readme.md'>this</a> to get example worked.</p>
+    `
+</script>
+</body>
+</html>
