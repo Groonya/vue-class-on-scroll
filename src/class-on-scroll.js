@@ -1,10 +1,9 @@
 const namespace = '@@vue-class-on-scroll'
 
 class ClassOnScroll {
-  constructor (el, vm) {
+  constructor (el, config) {
     this.el = el
-    this.vm = vm
-    this.class = 'sticky'
+    this.class = config.cssClass
     this.initialized = false
     this.initTop = null
   }
@@ -41,9 +40,20 @@ class ClassOnScroll {
   }
 }
 
+const getBindingConfig = binding => {
+  const params = binding.value || {}
+  let cssClass = params.class || 'sticky'
+  return { cssClass }
+}
+
+let bindingConfig = {}
+
 export default {
+  bind (el, binding) {
+    bindingConfig = getBindingConfig(binding)
+    el[namespace] = new ClassOnScroll(el, bindingConfig)
+  },
   inserted (el, bind, vnode) {
-    el[namespace] = new ClassOnScroll(el, vnode.context)
     el[namespace].init()
   }
 }
